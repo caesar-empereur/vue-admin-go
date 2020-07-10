@@ -6,6 +6,8 @@ import (
 )
 
 func init() {
+	beego.Router("/api/order/page", &controllers.OrderController{}, "get:OrderPage")
+
 	//ns := beego.NewNamespace("/v1",
 	//	beego.NSNamespace("/object",
 	//		beego.NSInclude(
@@ -20,17 +22,13 @@ func init() {
 	//)
 	//beego.AddNamespace(ns)
 
-	beego.Router("/api/order/page", &controllers.OrderController{}, "get:OrderPage")
 
-	//ns :=
-	//	beego.NewNamespace("/v1",
-	//		beego.NSNamespace("/ca",
+	//ns := beego.NewNamespace("v1",
+	//		beego.NSNamespace("/api/order/page",
 	//			beego.NSInclude(
 	//				&controllers.OrderController{},
 	//			),
 	//		),
 	//	)
 	//beego.AddNamespace(ns)
-	//
-	//beego.SetStaticPath("/swagger", "swagger")
 }
