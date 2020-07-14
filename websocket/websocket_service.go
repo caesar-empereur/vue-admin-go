@@ -22,11 +22,10 @@ var upgrader = websocket.Upgrader{
 var connectMap = make(map[*websocket.Conn]bool)
 
 func (this *WebsocketService) Connect() {
-	log := logs.NewLogger()
+	log := utils.GetLogger()
 
 	connect, err := upgrader.Upgrade(this.Ctx.ResponseWriter, this.Ctx.Request, nil)
 	if err != nil {
-		log.Error(" ", err)
 		panic("客户端建立连接错误 " + err.Error())
 	}
 

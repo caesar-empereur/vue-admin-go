@@ -1,7 +1,6 @@
 package repository
 
 import (
-	"github.com/astaxie/beego/logs"
 	orm2 "github.com/astaxie/beego/orm"
 	"vue-admin-go/utils"
 	"vue-admin-go/vo"
@@ -9,7 +8,7 @@ import (
 
 func PageQuery(pageNo int, pageSize int, sqlParam map[string]interface{}, table string, resultSaved interface{}) *vo.PageResponse {
 
-	log := logs.NewLogger()
+	log := utils.GetLogger()
 
 	if pageNo == 0 {
 		pageNo = 1
@@ -26,7 +25,7 @@ func PageQuery(pageNo int, pageSize int, sqlParam map[string]interface{}, table 
 	}
 
 	count, _ := querySetter.Count()
-	log.Info(" 条件查询行数: ", count)
+	log.Debug(" 条件查询行数: ", count)
 
 	limitStart := utils.ProcessPageStart(pageNo, pageSize)
 	querySetter.OrderBy("-id").Limit(pageSize, limitStart).All(resultSaved)
