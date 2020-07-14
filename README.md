@@ -1,18 +1,16 @@
 ## vue-admin-web 项目的go服务端
 
-```
-项目运行步骤
 
-1 环境配置
-    1 nginx 的配置
-    2 项目的 application.properties 的配置
-    3 操作系统的 host 文件配置
-    4 执行数据库脚本文件 data.sql
-2 运行项目
-    1 项目使用 beego web框架和go mod依赖关系
-    2 进入项目根目录，执行 go run main.go 会自动下载相关依赖并启动
-    3 浏览器打开 https://vue-admin-server.top/swagger-ui.hmtl 检验项目是否能正常访问
-```
+### 项目运行步骤
+
+- 环境配置
+    - 1 nginx 的配置
+    - 2 操作系统的 host 文件配置
+    - 3 执行数据库脚本文件 data.sql
+- 运行项目
+    - 1 项目使用 beego web框架和go mod依赖管理
+    - 2 进入项目根目录，执行 go run main.go 会自动下载相关依赖并启动
+    - 3 浏览器打开 https://vue-admin-server.top/swagger-ui.hmtl 检验项目是否能正常访问
 
 
 
