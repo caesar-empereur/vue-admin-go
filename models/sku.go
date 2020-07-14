@@ -9,11 +9,11 @@ type Sku struct {
 
 	Spec string `orm:"column(spec)" json:"spec"`
 
-	ShipFee int `orm:"column(ship_fee)" json:"ship_fee"`
+	ShipFee int `orm:"column(ship_fee)" json:"shipFee"`
 
 	Count int `orm:"column(count)" json:"count"`
 
-	ImageUrl string `orm:"column(image_url)" json:"image_url"`
+	ImageUrl string `orm:"column(image_url)" json:"imageUrl"`
 }
 
 func (sku *Sku) TableName() string {

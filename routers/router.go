@@ -3,32 +3,11 @@ package routers
 import (
 	"github.com/astaxie/beego"
 	"vue-admin-go/controllers"
+	"vue-admin-go/websocket"
 )
 
 func init() {
-	beego.Router("/api/order/page", &controllers.OrderController{}, "get:OrderPage")
-
-	//ns := beego.NewNamespace("/v1",
-	//	beego.NSNamespace("/object",
-	//		beego.NSInclude(
-	//			&controllers.ObjectController{},
-	//		),
-	//	),
-	//	beego.NSNamespace("/user",
-	//		beego.NSInclude(
-	//			&controllers.UserController{},
-	//		),
-	//	),
-	//)
-	//beego.AddNamespace(ns)
-
-
-	//ns := beego.NewNamespace("v1",
-	//		beego.NSNamespace("/api/order/page",
-	//			beego.NSInclude(
-	//				&controllers.OrderController{},
-	//			),
-	//		),
-	//	)
-	//beego.AddNamespace(ns)
+	beego.Router("/order-sku/order/page", &controllers.OrderController{}, "get:OrderPage")
+	beego.Router("/order-sku/sku/page", &controllers.SkuController{}, "get:SkuPage")
+	beego.Router("/wss", &websocket.WebsocketService{}, "get:Connect")
 }

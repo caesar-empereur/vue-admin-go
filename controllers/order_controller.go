@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	orm2 "github.com/astaxie/beego/orm"
 	"vue-admin-go/models"
+	"vue-admin-go/repository"
 )
 
 type OrderController struct {
@@ -12,23 +12,23 @@ type OrderController struct {
 
 func (this *OrderController) OrderPage() {
 
-	//pageNo := this.GetString("pageNo")
-	//pageSize := this.GetString("pageSize")
-	//orderNo := this.GetString("orderNo")
-	//status := this.GetString("status")
-	//
-	//if pageNo == nil {
-	//	pageNo := 1
-	//}
-	//if pageSize == nil{
-	//	pageSize := 10
-	//}
+	var pageNo, _ = this.GetInt("pageNo")
+	var pageSize, _ = this.GetInt("pageSize")
+	orderNo := this.GetString("orderNo")
+	status := this.GetString("status")
 
-	orm := orm2.NewOrm()
-	orderTabel := new(models.Order)
 	var orders []models.Order
-	orm.QueryTable(orderTabel).All(&orders)
 
-	this.Data["json"] = orders
+	sqlParam := make(map[string]interface{})
+	if orderNo != "" {
+		sqlParam["order_no"] = orderNo
+	}
+	if status != "" {
+		sqlParam["status"] = status
+	}
+
+	pageResponse := repository.PageQuery(pageNo, pageSize, sqlParam, "t_order", &orders)
+
+	this.Data["json"] = pageResponse
 	this.ServeJSON()
 }
