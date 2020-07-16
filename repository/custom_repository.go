@@ -6,7 +6,7 @@ import (
 	"vue-admin-go/vo"
 )
 
-func PageQuery(pageNo int, pageSize int, sqlParam map[string]interface{}, table string, resultSaved interface{}) *vo.PageResponse {
+func PageQuery(pageNo int, pageSize int, sqlParam map[string]interface{}, table string, resultSaved interface{}) vo.PageResponse {
 
 	log := utils.GetLogger()
 

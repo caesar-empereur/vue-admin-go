@@ -3,8 +3,8 @@ package websocket
 import (
 	"encoding/json"
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/logs"
 	"github.com/gorilla/websocket"
+	"github.com/prometheus/common/log"
 	"net/http"
 	"time"
 	"vue-admin-go/utils"
@@ -50,16 +50,16 @@ func sendMessage(connect *websocket.Conn) {
 
 		message, _ := json.Marshal(lineResponse)
 
-		logs.Info(" 发送到客户端的消息：", string(message))
+		log.Info(" 发送到客户端的消息：", string(message))
 
 		err := connect.WriteMessage(1, message)
 		if err != nil {
-			logs.Info("客户端连接关闭")
+			log.Info("客户端连接关闭")
 			connect.Close()
 			delete(connectMap, connect)
 			break
 		}
-		logs.Info("发送消息成功")
+		log.Info("发送消息成功")
 	}
 
 }

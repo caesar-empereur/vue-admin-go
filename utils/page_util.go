@@ -2,9 +2,9 @@ package utils
 
 import "vue-admin-go/vo"
 
-func HandlePage(pageNo int, pageSize int, resCount int) *vo.PageResponse {
+func HandlePage(pageNo int, pageSize int, resCount int) vo.PageResponse {
 
-	pageResponse := new(vo.PageResponse)
+	pageResponse := vo.PageResponse{}
 	pageResponse.PageNo = pageNo
 	pageResponse.PageSize = pageSize
 	pageResponse.TotalElements = resCount
