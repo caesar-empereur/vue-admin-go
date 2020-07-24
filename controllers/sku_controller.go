@@ -16,6 +16,10 @@ func (this *SkuController) SkuPage() {
 	var pageSize, _ = this.GetInt("pageSize")
 	name := this.GetString("name")
 
+	if pageSize == 0{
+		panic("参数错误")
+	}
+
 	var skus []models.Sku
 
 	sqlParam := make(map[string]interface{})

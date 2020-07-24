@@ -1,10 +1,11 @@
-package models
+package repository
 
 import (
 	"fmt"
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
+	"vue-admin-go/models"
 )
 
 func RegisterDB() {
@@ -16,7 +17,7 @@ func RegisterDB() {
 	orm.RegisterDriver("mysql", orm.DRMySQL)
 	orm.RegisterDataBase("default", "mysql", sqlConn, 30)
 
-	orm.RegisterModel(new(Order))
-	orm.RegisterModel(new(Sku))
+	orm.RegisterModel(new(models.Order))
+	orm.RegisterModel(new(models.Sku))
 	orm.Debug = true
 }

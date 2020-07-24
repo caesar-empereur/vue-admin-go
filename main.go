@@ -2,14 +2,14 @@ package main
 
 import (
 	"github.com/astaxie/beego/plugins/cors"
-	"vue-admin-go/models"
+	"vue-admin-go/repository"
 	_ "vue-admin-go/routers"
 
 	"github.com/astaxie/beego"
 )
 
 func init() {
-	models.RegisterDB()
+	repository.RegisterDB()
 }
 
 func main() {
